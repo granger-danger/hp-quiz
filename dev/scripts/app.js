@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {
 	BrowserRouter as Router,
 	Route, Link} from 'react-router-dom';
+import SweetAlert from 'sweetalert-react';
 
 // import Hogwarts from './hogwarts-quiz.js';
 // import Wands from './wand-quiz.js';
@@ -122,6 +123,13 @@ class Hogwarts extends React.Component {
 		this.slytherin();
 		this.hufflepuff();
 	}
+	handleSubmit() {
+		event.preventDefault();
+		this.state(house).reduce(function(a, b){
+			console.log(house[a] > obj[b] ? a : b);
+		});
+		// console.log()
+	}
 	render() {
 		return (
 			<div>
@@ -175,6 +183,7 @@ class Hogwarts extends React.Component {
 							</ul>
 						</li>
 					</ol>
+					<input type="submit" onSubmit={this.handleSubmit}/>
 				</form>
 			</div>
 		)
