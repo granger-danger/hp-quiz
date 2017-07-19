@@ -1,5 +1,62 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+	BrowserRouter as Router,
+	Route, Link} from 'react-router-dom';
+
+// import Hogwarts from './hogwarts-quiz.js';
+// import Wands from './wand-quiz.js';
+
+class App extends React.Component {
+	render() {
+		return (
+			<div>
+				<Router basename="/">
+					<div className='wrapper'>
+						<Route path='/hogwarts-quiz' component={Hogwarts} />
+						<Route path='/wand-quiz' component={Wands} />
+						<Link to='hogwarts-quiz'>
+							<img src="https://placebear.com/200/200"/>
+							<h3>Hogwarts House Quiz</h3>
+						</Link>
+						<Link to='wand-quiz'>
+							<img src="https://placebear.com/200/200"/>
+							<h3>Wand Quiz</h3>
+						</Link>
+					</div>
+				</Router>
+			</div>
+		)
+	}
+}
+
+class Wands extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+
+		}
+	}
+	render() {
+		return (
+			<div>
+				<div className="mask"></div>
+				<form action="">
+					<div className="mask"></div>
+					<h1>Wand Choosing Quiz</h1>
+					<ol>
+						<li>Do you wait to cross the street until the walk signal has appeared, even if there are no cars coming?
+							<ul className="choice">
+								<li><input type="radio" name="hogwarts1" id="wait" onClick={this.slythraw}/><label htmlFor="wait">Wait</label></li>
+								<li><input type="radio" name="hogwarts1" id="walk" onClick={this.gryffhuff}/><label htmlFor="walk">Walk</label></li>
+							</ul>
+						</li>
+					</ol>
+				</form>
+			</div>
+		)
+	}
+}
 
 class Hogwarts extends React.Component {
 	constructor() {
@@ -109,21 +166,19 @@ class Hogwarts extends React.Component {
 								<li><input type="radio" name="hogwarts6" id="rules" onClick={this.huffraw}/><label htmlFor="rules">Governing rules</label></li>
 							</ul>
 						</li>
+						<li>Friends describe you as...
+							<ul className="choice">
+								<li><input type="radio" name="hogwarts7" id="stubborn" onClick={this.gryffindor}/><label htmlFor="stubborn">Stubborn</label></li>
+								<li><input type="radio" name="hogwarts7" id="cunning" onClick={this.slytherin}/><label htmlFor="cunning">Cunning</label></li>
+								<li><input type="radio" name="hogwarts7" id="loyal" onClick={this.hufflepuff}/><label htmlFor="loyal">Loyal</label></li>
+								<li><input type="radio" name="hogwarts7" id="intelligent" onClick={this.ravenclaw}/><label htmlFor="intelligent">Intelligent</label></li>
+							</ul>
+						</li>
 					</ol>
 				</form>
 			</div>
 		)
 	}
-}
-
-class App extends React.Component {
-    render() {
-      return (
-        <div>
-          <Hogwarts/>
-        </div>
-      )
-    }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
