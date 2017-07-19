@@ -68,8 +68,10 @@ class Hogwarts extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>Hogwarts House Sorting Quiz</h1>
+				<div className="mask"></div>
 				<form action="">
+					<div className="mask"></div>
+					<h1>Hogwarts House Sorting Quiz</h1>
 					<ol>
 						<li>Do you wait to cross the street until the walk signal has appeared, even if there are no cars coming?
 							<ul className="choice">
