@@ -15,11 +15,11 @@ class App extends React.Component {
 					<div className='wrapper'>
 						<Route path='/hogwarts-quiz' component={Hogwarts} />
 						<Route path='/wand-quiz' component={Wands} />
-						<Link to='/hogwarts-quiz'>
+						<Link to='hogwarts-quiz'>
 							<img src="https://placebear.com/200/200"/>
 							<h3>Hogwarts House Quiz</h3>
 						</Link>
-						<Link to='/wand-quiz'>
+						<Link to='wand-quiz'>
 							<img src="https://placebear.com/200/200"/>
 							<h3>Wand Quiz</h3>
 						</Link>
@@ -40,8 +40,10 @@ class Wands extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>Wand Choosing Quiz</h1>
+				<div className="mask"></div>
 				<form action="">
+					<div className="mask"></div>
+					<h1>Wand Choosing Quiz</h1>
 					<ol>
 						<li>Do you wait to cross the street until the walk signal has appeared, even if there are no cars coming?
 							<ul className="choice">
@@ -123,8 +125,10 @@ class Hogwarts extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>Hogwarts House Sorting Quiz</h1>
+				<div className="mask"></div>
 				<form action="">
+					<div className="mask"></div>
+					<h1>Hogwarts House Sorting Quiz</h1>
 					<ol>
 						<li>Do you wait to cross the street until the walk signal has appeared, even if there are no cars coming?
 							<ul className="choice">
