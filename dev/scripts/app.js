@@ -78,6 +78,7 @@ class Hogwarts extends React.Component {
 		this.huffraw = this.huffraw.bind(this);
 		this.gryffraw = this.gryffraw.bind(this);
 		this.slythhuff = this.slythhuff.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 	gryffindor() {
 		this.setState({
@@ -123,18 +124,18 @@ class Hogwarts extends React.Component {
 		this.slytherin();
 		this.hufflepuff();
 	}
-	handleSubmit() {
-		event.preventDefault();
-		this.state(house).reduce(function(a, b){
-			console.log(house[a] > obj[b] ? a : b);
-		});
-		// console.log()
+	handleSubmit(e) {
+		e.preventDefault();
+		// this.state(house).reduce(function(a, b){
+		// 	console.log(house[a] > obj[b] ? a : b);
+		// });
+		console.log("sup");
 	}
 	render() {
 		return (
 			<div>
 				<div className="mask"></div>
-				<form action="">
+				<form action="" onSubmit={this.handleSubmit}>
 					<div className="mask"></div>
 					<h1>Hogwarts House Sorting Quiz</h1>
 					<ol>
@@ -183,7 +184,7 @@ class Hogwarts extends React.Component {
 							</ul>
 						</li>
 					</ol>
-					<input type="submit" onSubmit={this.handleSubmit}/>
+					<input type="submit" />
 				</form>
 			</div>
 		)
