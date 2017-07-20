@@ -11,21 +11,34 @@ import SweetAlert from 'sweetalert-react';
 class App extends React.Component {
 	render() {
 		return (
+			<Router basename='/'>
+				<div>
+					<Route exact path='/' component={HomePage} />
+					<Route path='/hogwarts-quiz' component={Hogwarts} />
+					<Route path='/wand-quiz' component={Wands} />
+				</div>
+			</Router>
+		)
+	}
+}
+
+class HomePage extends React.Component {
+	render() {
+		return (
 			<div>
-				<Router basename="/">
-					<div className='wrapper'>
-						<Route path='/hogwarts-quiz' component={Hogwarts} />
-						<Route path='/wand-quiz' component={Wands} />
-						<Link to='hogwarts-quiz'>
-							<img src="https://placebear.com/200/200"/>
-							<h3>Hogwarts House Quiz</h3>
-						</Link>
-						<Link to='wand-quiz'>
-							<img src="https://placebear.com/200/200"/>
-							<h3>Wand Quiz</h3>
-						</Link>
-					</div>
-				</Router>
+				<div className='wrapper'>
+					{/* <Route path='/hogwarts-quiz' component={Hogwarts} /> */}
+					{/* <Route path='/wand-quiz' component={Wands} /> */}
+					<h1>Harry Potter Quizzes</h1>
+					<Link to='hogwarts-quiz'>
+						<img src="./assets/sorting_hat.svg"/>
+						<h3>Hogwarts House Quiz</h3>
+					</Link>
+					<Link to='wand-quiz'>
+						<img src="./assets/wand.svg"/>
+						<h3>Wand Quiz</h3>
+					</Link>
+				</div>
 			</div>
 		)
 	}
