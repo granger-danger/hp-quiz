@@ -26,16 +26,27 @@ class HomePage extends React.Component {
 	render() {
 		return (
 			<div>
-				<div className='wrapper'>
+				<div className="mask"></div>
+				<div className="wrapper">
 					<h1>Harry Potter Quizzes</h1>
-					<Link to='hogwarts-quiz'>
-						<img src="./assets/sorting_hat.svg"/>
-						<h3>Hogwarts House Quiz</h3>
-					</Link>
-					<Link to='wand-quiz'>
-						<img src="./assets/wand.svg"/>
-						<h3>Wand Quiz</h3>
-					</Link>
+					<div className="quizzes">
+						<Link to='hogwarts-quiz'>
+							<img src="./assets/sorting_hat.svg"/>
+							<h3>Hogwarts House Quiz</h3>
+						</Link>
+						<Link to='wand-quiz'>
+							<img src="./assets/wand.svg"/>
+							<h3>Wand Quiz</h3>
+						</Link>
+						<Link to='patronus-quiz'>
+							<img src="./assets/wolf.svg"/>
+							<h3>Patronus Quiz</h3>
+						</Link>
+						<Link to='ilvermorny-quiz'>
+							<img src="./assets/suitcase.svg"/>
+							<h3>Ilvermorny House Quiz</h3>
+						</Link>
+					</div>
 				</div>
 			</div>
 		)
@@ -241,13 +252,30 @@ class Hogwarts extends React.Component {
 						</li>
 					</ol>
 					<input type="submit" onClick={this.showAlert}/>
-					<SweetAlert 
+					<SweetAlert
 						show={this.state.show}
 						title="The Sorting Hat Says..."
 						text={`${this.state.finalHouse}!`}
 						onConfirm={this.closeAlert}
 						confirmButtonColor="#d3a625"
 					/>
+					<div className="moreQuizzes">
+						<h2>Take another quiz...</h2>
+						<div className="quizFooter">
+							<Link to='wand-quiz'>
+								<img src="./assets/wand.svg"/>
+								<h3>Wand Quiz</h3>
+							</Link>
+							<Link to='patronus-quiz'>
+								<img src="./assets/wolf.svg"/>
+								<h3>Patronus Quiz</h3>
+							</Link>
+							<Link to='ilvermorny-quiz'>
+								<img src="./assets/suitcase.svg"/>
+								<h3>Ilvermorny House Quiz</h3>
+							</Link>
+						</div>
+					</div>
 				</form>
 			</div>
 		)
