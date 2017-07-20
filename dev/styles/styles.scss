@@ -84,3 +84,19 @@ form {
 	margin: 50px 0;
 	border: 2px dashed #d3a625;
 }
+
+.sweet-alert h2 {
+	font-family: 'Mountains of Christmas', cursive;
+	font-size: 40px;
+	color: #d3a625;
+	text-shadow: 1px 1px 0 #222222;
+}
+
+.sweet-alert p {
+	font-family: 'Mountains of Christmas', cursive;
+	font-size: 30px;
+}
+
+.sweet-alert fieldset {
+	display: none;
+}
