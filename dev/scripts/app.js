@@ -27,8 +27,6 @@ class HomePage extends React.Component {
 		return (
 			<div>
 				<div className='wrapper'>
-					{/* <Route path='/hogwarts-quiz' component={Hogwarts} /> */}
-					{/* <Route path='/wand-quiz' component={Wands} /> */}
 					<h1>Harry Potter Quizzes</h1>
 					<Link to='hogwarts-quiz'>
 						<img src="./assets/sorting_hat.svg"/>
@@ -76,10 +74,13 @@ class Hogwarts extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			gryffindor: 0,
-			slytherin: 0,
-			hufflepuff: 0,
-			ravenclaw: 0,
+			house: {
+				gryffindor: 0,
+				slytherin: 0,
+				hufflepuff: 0,
+				ravenclaw: 0
+			},
+			finalHouse: null,
 			show: false
 		};
 		this.gryffindor = this.gryffindor.bind(this);
@@ -98,22 +99,42 @@ class Hogwarts extends React.Component {
 	}
 	gryffindor() {
 		this.setState({
-			gryffindor: this.state.gryffindor + 1
+			house: {
+				gryffindor: this.state.house.gryffindor + 1,
+				slytherin: this.state.house.slytherin,
+				hufflepuff: this.state.house.hufflepuff,
+				ravenclaw: this.state.house.ravenclaw
+			}
 		})
 	}
 	slytherin() {
 		this.setState({
-			slytherin: this.state.slytherin + 1
+			house: {
+				slytherin: this.state.house.slytherin + 1,
+				gryffindor: this.state.house.gryffindor,
+				hufflepuff: this.state.house.hufflepuff,
+				ravenclaw: this.state.house.ravenclaw
+			}
 		})
 	}
 	hufflepuff() {
 		this.setState({
-			hufflepuff: this.state.hufflepuff + 1
+			house: {
+				hufflepuff: this.state.house.hufflepuff + 1,
+				gryffindor: this.state.house.gryffindor,
+				slytherin: this.state.house.slytherin,
+				ravenclaw: this.state.house.ravenclaw
+			}
 		})
 	}
 	ravenclaw() {
 		this.setState({
-			ravenclaw: this.state.ravenclaw + 1
+			house: {
+				ravenclaw: this.state.house.ravenclaw + 1,
+				gryffindor: this.state.house.gryffindor,
+				slytherin: this.state.house.slytherin,
+				hufflepuff: this.state.house.hufflepuff
+			}
 		})
 	}
 	slythraw() {
@@ -142,13 +163,23 @@ class Hogwarts extends React.Component {
 	}
 	handleSubmit(e) {
 		e.preventDefault();
-		// this.state(house).reduce(function(a, b){
-		// 	console.log(house[a] > obj[b] ? a : b);
-		// });
 	}
 	showAlert() {
+
+		var maxValue = 0;
+		var finalHouse = null;
+		var hogwarts = this.state.house;
+		for (var house in hogwarts) {
+			if (hogwarts[house] > maxValue) {
+				maxValue = hogwarts[house];
+				finalHouse = house;
+			}
+		}
+		finalHouse = finalHouse.toUpperCase();
+		
 		this.setState({
-			show: true
+			show: true,
+			finalHouse: finalHouse
 		});
 	}
 	closeAlert() {
@@ -213,7 +244,7 @@ class Hogwarts extends React.Component {
 					<SweetAlert 
 						show={this.state.show}
 						title="The Sorting Hat Says..."
-						text="Gryffindor!"
+						text={`${this.state.finalHouse}!`}
 						onConfirm={this.closeAlert}
 						confirmButtonColor="#d3a625"
 					/>
