@@ -79,7 +79,8 @@ class Hogwarts extends React.Component {
 			gryffindor: 0,
 			slytherin: 0,
 			hufflepuff: 0,
-			ravenclaw: 0
+			ravenclaw: 0,
+			show: false
 		};
 		this.gryffindor = this.gryffindor.bind(this);
 		this.slytherin = this.slytherin.bind(this);
@@ -92,6 +93,8 @@ class Hogwarts extends React.Component {
 		this.gryffraw = this.gryffraw.bind(this);
 		this.slythhuff = this.slythhuff.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.showAlert = this.showAlert.bind(this);
+		this.closeAlert = this.closeAlert.bind(this);
 	}
 	gryffindor() {
 		this.setState({
@@ -142,7 +145,16 @@ class Hogwarts extends React.Component {
 		// this.state(house).reduce(function(a, b){
 		// 	console.log(house[a] > obj[b] ? a : b);
 		// });
-		console.log("sup")
+	}
+	showAlert() {
+		this.setState({
+			show: true
+		});
+	}
+	closeAlert() {
+		this.setState({
+			show: false
+		});
 	}
 	render() {
 		return (
@@ -197,7 +209,14 @@ class Hogwarts extends React.Component {
 							</ul>
 						</li>
 					</ol>
-					<input type="submit" />
+					<input type="submit" onClick={this.showAlert}/>
+					<SweetAlert 
+						show={this.state.show}
+						title="The Sorting Hat Says..."
+						text="Gryffindor!"
+						onConfirm={this.closeAlert}
+						confirmButtonColor="#d3a625"
+					/>
 				</form>
 			</div>
 		)
