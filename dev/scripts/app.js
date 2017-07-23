@@ -4,6 +4,7 @@ import {
 	BrowserRouter as Router,
 	Route, Link} from 'react-router-dom';
 import SweetAlert from 'sweetalert-react';
+// import $ from 'jquery';
 
 // import Hogwarts from './hogwarts-quiz.js';
 // import Wands from './wand-quiz.js';
@@ -23,6 +24,12 @@ class App extends React.Component {
 }
 
 class HomePage extends React.Component {
+	constructor() {
+		super();
+		this.activateSparkles = this.activateSparkles.bind(this);
+	}
+	activateSparkles() {
+	}
 	render() {
 		return (
 			<div>
@@ -30,7 +37,7 @@ class HomePage extends React.Component {
 				<div className="wrapper">
 					<h1>Harry Potter Quizzes</h1>
 					<div className="quizzes">
-						<Link to='hogwarts-quiz'>
+						<Link to='hogwarts-quiz' onMouseOver={this.activateSparkles}>
 							<img src="./assets/sorting_hat.svg"/>
 							<h3>Hogwarts House Quiz</h3>
 						</Link>
@@ -57,8 +64,25 @@ class Wands extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-
+			length: '',
+			rigidity: '',
+			wood: '',
+			core: ''
 		}
+		this.wandLength = this.wandLength.bind(this);
+	}
+	wandLength(e) {
+		let wandSelection = e.target.id;
+		const short = ['8 1/4 inches', '8 3/4 inches', '9 2/3 inches'];
+		const average = ['10 1/2 inches', '10 3/9 inches', '11 5/8 inches',];
+		const tall = ['12 7/8 inches', '13 1/4 inches', '14 inches'];
+		const randomIndex = Math.floor(Math.random() * short.length);
+		const randomWandLength = wandSelection.value[randomIndex];
+		// console.log(e.target.id);
+		console.log(randomWandLength);
+		// this.setState = {
+		// 	length: e.target.value
+		// }
 	}
 	render() {
 		return (
@@ -68,10 +92,32 @@ class Wands extends React.Component {
 					<div className="mask"></div>
 					<h1>Wand Choosing Quiz</h1>
 					<ol>
-						<li>Do you wait to cross the street until the walk signal has appeared, even if there are no cars coming?
+						<li>Are you short, average, or tall?
 							<ul className="choice">
-								<li><input type="radio" name="hogwarts1" id="wait" onClick={this.slythraw}/><label htmlFor="wait">Wait</label></li>
-								<li><input type="radio" name="hogwarts1" id="walk" onClick={this.gryffhuff}/><label htmlFor="walk">Walk</label></li>
+								<li><input type="radio" name="wand1" id="short" onClick={this.wandLength}/><label htmlFor="short">Short</label></li>
+								<li><input type="radio" name="wand1" id="average" onClick={this.wandLength}/><label htmlFor="average">Average</label></li>
+								<li><input type="radio" name="wand1" id="tall" onClick={this.wandLength}/><label htmlFor="tall">Tall</label></li>
+							</ul>
+						</li>
+						<li>Do you bend to others' opinions easily or hold fast to your beliefs?
+							<ul className="choice">
+								<li><input type="radio" name="wand2" id="rigid" onClick={this.slythraw}/><label htmlFor="rigid">I'm only concerned with my opinion</label></li>
+								<li><input type="radio" name="wand2" id="springy" onClick={this.gryffhuff}/><label htmlFor="springy">It depends</label></li>
+								<li><input type="radio" name="wand2" id="flexible" onClick={this.gryffhuff}/><label htmlFor="flexible">I'm pretty easily persuaded</label></li>
+							</ul>
+						</li>
+						<li>What trait do you most value in a fellow colleague or student?
+							<ul className="choice">
+								<li><input type="radio" name="wand3" id="loyal" onClick={this.slythraw}/><label htmlFor="loyal">I'm only concerned with my opinion</label></li>
+								<li><input type="radio" name="wand3" id="warrior" onClick={this.gryffhuff}/><label htmlFor="warrior">It depends</label></li>
+								<li><input type="radio" name="wand3" id="intellect" onClick={this.gryffhuff}/><label htmlFor="intellect">I'm pretty easily persuaded</label></li>
+							</ul>
+						</li>
+						<li>What outside activity do you most enjoy?
+							<ul className="choice">
+								<li><input type="radio" name="wand4" id="unicorn" onClick={this.slythraw}/><label htmlFor="unicorn">Swimming in a lagoon</label></li>
+								<li><input type="radio" name="wand4" id="dragon" onClick={this.gryffhuff}/><label htmlFor="dragon">A bonfire</label></li>
+								<li><input type="radio" name="wand4" id="phoenix" onClick={this.gryffhuff}/><label htmlFor="phoenix">Hiking in the mountains</label></li>
 							</ul>
 						</li>
 					</ol>
@@ -187,7 +233,7 @@ class Hogwarts extends React.Component {
 			}
 		}
 		finalHouse = finalHouse.toUpperCase();
-		
+
 		this.setState({
 			show: true,
 			finalHouse: finalHouse
