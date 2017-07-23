@@ -131,6 +131,14 @@ input[type=submit] {
 	padding: 5px 10px;
 	display: block;
 	margin: 0 auto;
+	border-radius: 5px;
+	border: 1px solid #d3a625;
+	transition: all 0.2s;
+	&:hover {
+		background: transparent;
+		color: #d3a625;
+		border: 1px dashed #d3a625;
+	}
 }
 
 .sweet-alert h2 {
