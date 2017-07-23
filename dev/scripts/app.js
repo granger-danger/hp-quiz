@@ -28,7 +28,7 @@ class HomePage extends React.Component {
 			<div>
 				<div className="mask"></div>
 				<div className="wrapper">
-					<h1>Harry Potter Quizzes</h1>
+					<h1>Pottergalore</h1>
 					<div className="quizzes">
 						<Link to='hogwarts-quiz'>
 							<img src="./assets/sorting_hat.svg"/>
