@@ -67,39 +67,84 @@ class Wands extends React.Component {
 			length: '',
 			rigidity: '',
 			wood: '',
-			core: ''
+			core: '',
+			show: false
 		}
 		this.wandLength = this.wandLength.bind(this);
+		this.rigidity = this.rigidity.bind(this);
+		this.wandWood = this.wandWood.bind(this);
+		this.wandCore = this.wandCore.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.showAlert = this.showAlert.bind(this);
+		this.closeAlert = this.closeAlert.bind(this);
 	}
 	wandLength(e) {
 		let wandSelection = e.target.id;
-		console.log(wandSelection);
-
 		if (wandSelection === "short") {
-			wandSelection = ['8 1/4 inches', '8 3/4 inches', '9 2/3 inches'];
-			console.log(wandSelection);
+			wandSelection = ['8 1/4 inch', '8 3/4 inch', '9 2/3 inch'];
 		} else if (wandSelection === "average") {
-			wandSelection = ['10 1/2 inches', '10 3/9 inches', '11 5/8 inches',];
-			console.log(wandSelection);
+			wandSelection = ['10 1/2 inch', '10 3/9 inch', '11 5/8 inch'];
 		} else if (wandSelection === "tall") {
-			wandSelection = ['12 7/8 inches', '13 1/4 inches', '14 inches'];
-			console.log(wandSelection);
+			wandSelection = ['12 7/8 inch', '13 1/4 inch', '14 inch'];
 		}
-
 		const randomIndex = Math.floor(Math.random() * wandSelection.length);
-		console.log(randomIndex);
 		const randomWandLength = wandSelection[randomIndex];
-		console.log(randomWandLength);
-
 		this.setState({
 			length: randomWandLength
+		});
+	}
+	rigidity(e) {
+		let rigidness = e.target.id;
+		this.setState({
+			rigidity: rigidness
+		});
+	}
+	wandWood(e) {
+		let wandWood = e.target.id;
+		if (wandWood === "loyal") {
+			wandWood = ['alder', 'dogwood', 'elm', 'English oak', 'hornbeam', 'larch', 'laurel', 'maple', 'pear', 'rowan', 'walnut', 'willow'];
+		} else if (wandWood === "warrior") {
+			wandWood = ['aspen', 'blackthorn', 'black walnut', 'cedar', 'cherry', 'cypress', 'ebony', 'elder', 'fir', 'pine', 'spruce', 'yew'];
+		} else if (wandWood === "intellect") {
+			wandWood = ['acacia', 'apple', 'ash', 'beech', 'chestnut', 'hawthorn', 'hazel', 'holly', 'poplar', 'red oak', 'redwood', 'sycamore', 'vine'];
+		}
+		const randomIndex = Math.floor(Math.random() * wandWood.length);
+		const randomWandWood = wandWood[randomIndex];
+		this.setState({
+			wood: randomWandWood
+		});
+	}
+	wandCore(e) {
+		let wandCore = e.target.id;
+		if (wandCore === "unicorn") {
+			wandCore = 'unicorn hair';
+		} else if (wandCore === "dragon") {
+			wandCore = 'dragon heartstring';
+		} else if (wandCore === "phoenix") {
+			wandCore = 'phoenix feather';
+		}
+		this.setState({
+			core: wandCore
+		});
+	}
+	handleSubmit(e) {
+		e.preventDefault();
+	}
+	showAlert() {
+		this.setState({
+			show: true
+		});
+	}
+	closeAlert() {
+		this.setState({
+			show: false
 		});
 	}
 	render() {
 		return (
 			<div>
 				<div className="mask"></div>
-				<form action="">
+				<form action="" onSubmit={this.handleSubmit}>
 					<div className="mask"></div>
 					<h1>Wand Choosing Quiz</h1>
 					<ol>
@@ -112,26 +157,34 @@ class Wands extends React.Component {
 						</li>
 						<li>Do you bend to others' opinions easily or hold fast to your beliefs?
 							<ul className="choice">
-								<li><input type="radio" name="wand2" id="rigid" onClick={this.slythraw}/><label htmlFor="rigid">I'm only concerned with my opinion</label></li>
-								<li><input type="radio" name="wand2" id="springy" onClick={this.gryffhuff}/><label htmlFor="springy">It depends</label></li>
-								<li><input type="radio" name="wand2" id="flexible" onClick={this.gryffhuff}/><label htmlFor="flexible">I'm pretty easily persuaded</label></li>
+								<li><input type="radio" name="wand2" id="rigid" onClick={this.rigidity}/><label htmlFor="rigid">I'm only concerned with my opinion</label></li>
+								<li><input type="radio" name="wand2" id="springy" onClick={this.rigidity}/><label htmlFor="springy">It depends</label></li>
+								<li><input type="radio" name="wand2" id="flexible" onClick={this.rigidity}/><label htmlFor="flexible">I'm pretty easily persuaded</label></li>
 							</ul>
 						</li>
 						<li>What trait do you most value in a fellow colleague or student?
 							<ul className="choice">
-								<li><input type="radio" name="wand3" id="loyal" onClick={this.slythraw}/><label htmlFor="loyal">I'm only concerned with my opinion</label></li>
-								<li><input type="radio" name="wand3" id="warrior" onClick={this.gryffhuff}/><label htmlFor="warrior">It depends</label></li>
-								<li><input type="radio" name="wand3" id="intellect" onClick={this.gryffhuff}/><label htmlFor="intellect">I'm pretty easily persuaded</label></li>
+								<li><input type="radio" name="wand3" id="loyal" onClick={this.wandWood}/><label htmlFor="loyal">Loyal to project and task at hand</label></li>
+								<li><input type="radio" name="wand3" id="warrior" onClick={this.wandWood}/><label htmlFor="warrior">Does whatever it takes to win</label></li>
+								<li><input type="radio" name="wand3" id="intellect" onClick={this.wandWood}/><label htmlFor="intellect">Thoughtful and enjoys a challenge</label></li>
 							</ul>
 						</li>
 						<li>What outside activity do you most enjoy?
 							<ul className="choice">
-								<li><input type="radio" name="wand4" id="unicorn" onClick={this.slythraw}/><label htmlFor="unicorn">Swimming in a lagoon</label></li>
-								<li><input type="radio" name="wand4" id="dragon" onClick={this.gryffhuff}/><label htmlFor="dragon">A bonfire</label></li>
-								<li><input type="radio" name="wand4" id="phoenix" onClick={this.gryffhuff}/><label htmlFor="phoenix">Hiking in the mountains</label></li>
+								<li><input type="radio" name="wand4" id="unicorn" onClick={this.wandCore}/><label htmlFor="unicorn">Swimming in a lagoon</label></li>
+								<li><input type="radio" name="wand4" id="dragon" onClick={this.wandCore}/><label htmlFor="dragon">A bonfire</label></li>
+								<li><input type="radio" name="wand4" id="phoenix" onClick={this.wandCore}/><label htmlFor="phoenix">Hiking in the mountains</label></li>
 							</ul>
 						</li>
 					</ol>
+					<input type="submit" onClick={this.showAlert}/>
+					<SweetAlert
+						show={this.state.show}
+						title="Your wand is..."
+						text={`a ${this.state.length} ${this.state.rigidity} ${this.state.wood} wand with a ${this.state.core} core!`}
+						onConfirm={this.closeAlert}
+						confirmButtonColor="#d3a625"
+					/>
 				</form>
 			</div>
 		)
