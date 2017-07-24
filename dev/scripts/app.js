@@ -4,10 +4,6 @@ import {
 	BrowserRouter as Router,
 	Route, Link} from 'react-router-dom';
 import SweetAlert from 'sweetalert-react';
-// import $ from 'jquery';
-
-// import Hogwarts from './hogwarts-quiz.js';
-// import Wands from './wand-quiz.js';
 
 class App extends React.Component {
 	render() {
@@ -17,6 +13,9 @@ class App extends React.Component {
 					<Route exact path='/' component={HomePage} />
 					<Route path='/hogwarts-quiz' component={Hogwarts} />
 					<Route path='/wand-quiz' component={Wands} />
+					<footer>
+						<p>© 2017 Created by <a href="http://www.kaitsykes.com">Kait Sykes</a> and <a href="http://www.nataliekwok.com">Natalie Kwok</a></p>
+					</footer>
 				</div>
 			</Router>
 		)
@@ -36,6 +35,7 @@ class HomePage extends React.Component {
 				<div className="mask"></div>
 				<div className="wrapper">
 					<h1>Pottergalore</h1>
+					<p className="tagline">Because we all need more Harry Potter themed quizzes!</p>
 					<div className="quizzes">
 						<Link to='hogwarts-quiz' onMouseOver={this.activateSparkles}>
 							<img src="./assets/sorting_hat.svg"/>
@@ -45,14 +45,16 @@ class HomePage extends React.Component {
 							<img src="./assets/wand.svg"/>
 							<h3>Wand Quiz</h3>
 						</Link>
-						<Link to='patronus-quiz'>
-							<img src="./assets/wolf.svg"/>
-							<h3>Patronus Quiz</h3>
-						</Link>
-						<Link to='ilvermorny-quiz'>
-							<img src="./assets/suitcase.svg"/>
-							<h3>Ilvermorny House Quiz</h3>
-						</Link>
+						{
+						// <Link to='patronus-quiz'>
+						// 	<img src="./assets/wolf.svg"/>
+						// 	<h3>Patronus Quiz</h3>
+						// </Link>
+						// <Link to='ilvermorny-quiz'>
+						// 	<img src="./assets/suitcase.svg"/>
+						// 	<h3>Ilvermorny House Quiz</h3>
+						// </Link>
+						}
 					</div>
 				</div>
 			</div>
@@ -185,6 +187,15 @@ class Wands extends React.Component {
 						onConfirm={this.closeAlert}
 						confirmButtonColor="#d3a625"
 					/>
+					<div className="moreQuizzes">
+						<h2>Take another quiz...</h2>
+						<div className="quizFooter">
+							<Link to='hogwarts-quiz'>
+								<img src="./assets/sorting_hat.svg"/>
+								<h3>Hogwarts House Quiz</h3>
+							</Link>
+						</div>
+					</div>
 				</form>
 			</div>
 		)
@@ -375,14 +386,6 @@ class Hogwarts extends React.Component {
 							<Link to='wand-quiz'>
 								<img src="./assets/wand.svg"/>
 								<h3>Wand Quiz</h3>
-							</Link>
-							<Link to='patronus-quiz'>
-								<img src="./assets/wolf.svg"/>
-								<h3>Patronus Quiz</h3>
-							</Link>
-							<Link to='ilvermorny-quiz'>
-								<img src="./assets/suitcase.svg"/>
-								<h3>Ilvermorny House Quiz</h3>
 							</Link>
 						</div>
 					</div>
