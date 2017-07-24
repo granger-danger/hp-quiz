@@ -22,6 +22,12 @@ body {
 	z-index: -9;
 }
 
+a {
+	text-decoration: none;
+	color: #d3a625;
+	text-shadow: 1px 1px 0 #222222;
+}
+
 // HOMEPAGE
 
 .wrapper {
@@ -38,11 +44,12 @@ body {
 
 .quizzes {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-content: center;
 	text-align: center;
 	a {
 		text-decoration: none;
+		border-radius: 50%;
 		h3 {
 			font-family: 'Mountains of Christmas', cursive;
 			font-size: 25px;
@@ -51,6 +58,9 @@ body {
 		}
 		&:visited {
 			color: #d3a625;
+		}
+		&:hover {
+			background-image: url(../../assets/sparkles.gif);
 		}
 	}
 	img {
@@ -109,6 +119,16 @@ h1 {
 	color: #d3a625;
 	text-shadow: 3px 3px 0 #222222;
 	text-align: center;
+	margin-bottom: 0;
+}
+
+.tagline {
+	font-family: 'Mountains of Christmas', cursive;
+	font-size: 25px;
+	color: darkslategrey;
+	text-shadow: 1px 1px 0 #d3a625;
+	text-align: center;
+	margin: 0 0 50px 0;
 }
 
 form {
@@ -171,27 +191,43 @@ input[type=submit] {
 
 .quizFooter {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-content: center;
 	text-align: center;
 	img {
 		max-width: 75%;
 	}
 	a {
-		text-decoration: none;
+		border-radius: 50%;
 		h3 {
 			font-family: 'Mountains of Christmas', cursive;
 			font-size: 20px;
-			color: #d3a625;
-			text-shadow: 0.5px 0.5px 0 #222222;
 		}
 		&:visited {
 			text-decoration: none;
 			color: #d3a625;
 		}
+		&:hover {
+			background-image: url(../../assets/sparkles.gif);
+		}
 	}
 }
 
+footer {
+	text-align: center;
+	font-family: 'Mountains of Christmas', cursive;
+	font-size: 25px;
+	color: #d3a625;
+	text-shadow: 1px 1px 0 #222222;
+	p {
+		display: inline-block;
+		background-color: rgba(255,255,255,0.9);
+	}
+	a:hover {
+		color: #444444;
+		text-shadow: 1px 1px 0 #d3a625;
+	}
+}
 
 // RESPONSIVE
 /* Portrait tablet and small desktops */
