@@ -73,16 +73,27 @@ class Wands extends React.Component {
 	}
 	wandLength(e) {
 		let wandSelection = e.target.id;
-		const short = ['8 1/4 inches', '8 3/4 inches', '9 2/3 inches'];
-		const average = ['10 1/2 inches', '10 3/9 inches', '11 5/8 inches',];
-		const tall = ['12 7/8 inches', '13 1/4 inches', '14 inches'];
-		const randomIndex = Math.floor(Math.random() * short.length);
-		const randomWandLength = wandSelection.value[randomIndex];
-		// console.log(e.target.id);
+		console.log(wandSelection);
+
+		if (wandSelection === "short") {
+			wandSelection = ['8 1/4 inches', '8 3/4 inches', '9 2/3 inches'];
+			console.log(wandSelection);
+		} else if (wandSelection === "average") {
+			wandSelection = ['10 1/2 inches', '10 3/9 inches', '11 5/8 inches',];
+			console.log(wandSelection);
+		} else if (wandSelection === "tall") {
+			wandSelection = ['12 7/8 inches', '13 1/4 inches', '14 inches'];
+			console.log(wandSelection);
+		}
+
+		const randomIndex = Math.floor(Math.random() * wandSelection.length);
+		console.log(randomIndex);
+		const randomWandLength = wandSelection[randomIndex];
 		console.log(randomWandLength);
-		// this.setState = {
-		// 	length: e.target.value
-		// }
+
+		this.setState({
+			length: randomWandLength
+		});
 	}
 	render() {
 		return (
