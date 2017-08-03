@@ -5,6 +5,17 @@ import {
 	Route, Link} from 'react-router-dom';
 import SweetAlert from 'sweetalert-react';
 
+// Initialize Firebase
+var config = {
+	apiKey: "AIzaSyA80neofFzbR2919aY2XhP5V6i_Tpb0iQg",
+	authDomain: "pottergalore-ad256.firebaseapp.com",
+	databaseURL: "https://pottergalore-ad256.firebaseio.com",
+	projectId: "pottergalore-ad256",
+	storageBucket: "",
+	messagingSenderId: "378053877734"
+};
+firebase.initializeApp(config);
+
 class App extends React.Component {
 	render() {
 		return (
